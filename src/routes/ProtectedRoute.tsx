@@ -1,7 +1,8 @@
 import { Navigate, Outlet } from 'react-router-dom';
+import { useGameStore } from '../store/useGameStore';
 
 export const ProtectedRoute = () => {
-  const userName = "";
+  const userName = useGameStore((state) => state.userName);
 
   // if no username exists, redirect to onboarding page
   if (!userName) {
