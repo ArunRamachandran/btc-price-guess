@@ -1,5 +1,7 @@
+const API_URL = import.meta.env.VITE_AWS_API_URL;
+
 export const syncScoreToAWS = async (userName: string, score: number) => {
-  const response = await fetch("https://w8aaag9np1.execute-api.eu-north-1.amazonaws.com/update-score", {
+  const response = await fetch(API_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ userName, score }),
