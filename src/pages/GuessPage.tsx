@@ -18,7 +18,7 @@ export const GuessPage = () => {
     lastResult,
     clearResult 
   } = useGameStore();
-  const { price } = useBtcPrice();
+  const { price, error } = useBtcPrice();
 
   // Derive status for the GuessResult component
   const status = useMemo((): GuessStatus => {
@@ -50,11 +50,13 @@ export const GuessPage = () => {
       clearResult();
     }
   }, []);
+
+  console.log("Rendering ", price);
   
   return (
     <main className={styles.layout}>
       <UserHeader />
-      <PriceTracker />
+      <PriceTracker price={price} error={error} />
       <div className={styles.actionSection}>
         {
           activeGuess ? 

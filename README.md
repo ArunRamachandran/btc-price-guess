@@ -36,7 +36,7 @@ Follow these instructions to get the project running on your local machine.
 ### Step-by-Step Setup
 1.  **Clone the Repository:**
     ```bash
-    git clone [https://github.com/](https://github.com/)ArunRamachandran/btc-price-guess.git
+    git clone [https://github.com/](https://github.com/ArunRamachandran/btc-price-guess.git)
     cd btc-price-guess
     ```
 
@@ -46,9 +46,9 @@ Follow these instructions to get the project running on your local machine.
     ```
 
 3.  **Environment Variables:**
-    Create a `.env` file in the root directory and add your AWS API endpoint:
+    Create a `.env` file in the root directory and add AWS API endpoint:
     ```bash
-    VITE_AWS_API_URL=[https://w8aaag9np1.execute-api.eu-north-1.amazonaws.com/update-score](https://w8aaag9np1.execute-api.eu-north-1.amazonaws.com/update-score)
+    VITE_AWS_API_URL=https://w8aaag9np1.execute-api.eu-north-1.amazonaws.com/update-score
     ```
 
 4.  **Run the App:**
@@ -69,6 +69,6 @@ The production version of the app is hosted on **GitHub Pages**.
 ---
 
 ## 📝 Features Checklist
-- [x] **Real-time Data:** Fetches live BTC/USD prices via the CoinGecko API.
+- [x] **Real-time Data:** Fetches live BTC/USD prices via the Binance Public API.
 - [x] **Game Logic:** 60-second "lock-in" period for price predictions.
 - [x] **Cloud Sync:** Automatic score persistence to AWS DynamoDB.

@@ -1,11 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const useBtcPrice = () => {
   const [price, setPrice] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const isFetching = useRef(false);
 
   useEffect(() => {
     const fetchPrice = async () => {
+      if (isFetching.current) return;
+      isFetching.current = true;
+
       try {
         const response = await fetch("https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT");
         const btcData  = await response.json();
@@ -16,6 +20,8 @@ export const useBtcPrice = () => {
       } catch (error) {
         setError("Failed to fetch BTC price");
         console.error("Error fetching BTC price:", error);
+      } finally {
+        isFetching.current = false;
       }
     }
 

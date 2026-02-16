@@ -1,9 +1,12 @@
-import { useBtcPrice } from "../../hooks/useBtcPrice";
+import { memo } from 'react';
 import styles from './game.module.css';
 
-export const PriceTracker = () => {
-  const { price, error } = useBtcPrice();
+interface PriceTrackerProps {
+  price: number | null;
+  error: string | null;
+}
 
+export const PriceTracker = memo(({ price, error }: PriceTrackerProps) => {
   return (
     <section>
       <h2 className={styles.label}>Current BTC Price</h2>
@@ -15,5 +18,7 @@ export const PriceTracker = () => {
         </div>
       )}
     </section>
-  )
-}
+  );
+});
+
+PriceTracker.displayName = 'PriceTracker';
