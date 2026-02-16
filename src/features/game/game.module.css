@@ -1,9 +1,22 @@
 /* --- Feature: UserHeader --- */
 .header {
   display: flex;
+  flex-direction: column;
+}
+
+.userDetails {
+  display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+}
+
+.logoutButton {
+  color: var(--text-muted);
+  font-size: 1rem;
+  text-align: end;
+  padding: 0.5rem;
+  cursor: pointer;
 }
 
 .badge {
