@@ -78,7 +78,7 @@ export const useGameStore = create<GameState>()(
 
       clearResult: () => set({ lastResult: null, isTimerExpired: false }),
       resetScore: () => set({ score: 0, activeGuess: null, lastResult: null }),
-      logout: () => set({ userName: "", activeGuess: null, lastResult: null }),
+      logout: () => set({ userName: "", score: 0, activeGuess: null, lastResult: null }),
     }),
     {
       name: "btc-price-guess-storage", // name of the item in storage
