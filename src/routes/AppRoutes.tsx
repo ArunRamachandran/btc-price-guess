@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { ProtectedRoute } from './ProtectedRoute'
 import { OnBoarding } from '../pages/OnBoarding';
 import { useGameStore } from '../store/useGameStore';
+import { GuessPage } from '../pages/GuessPage';
 
 export const AppRoutes = () => {
   const userName = useGameStore((state) => state.userName);
@@ -9,7 +10,7 @@ export const AppRoutes = () => {
   return (
     <Routes>
       <Route element={<ProtectedRoute />}>
-        <Route path="/guess" element={<div>GuessPage</div>} />
+        <Route path="/guess" element={<GuessPage />} />
       </Route>
       <Route 
         path="/" 

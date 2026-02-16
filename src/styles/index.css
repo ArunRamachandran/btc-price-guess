@@ -1,0 +1,66 @@
+@import './variables.css';
+
+/* 1. Global Reset & Base Config */
+:root {
+  font-family: var(--font-main);
+  line-height: var(--line-height);
+  font-weight: var(--font-weight-reg);
+
+  color-scheme: light;
+  color: var(--text-main);
+  background-color: var(--bg-deep);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  place-items: center;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  line-height: 1.1;
+}
+
+a {
+  font-weight: var(--font-weight-med);
+  color: var(--accent-blue);
+  text-decoration: inherit;
+  transition: opacity var(--transition-base);
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+button {
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1rem;
+  font-weight: var(--font-weight-med);
+  font-family: inherit;
+  background-color: var(--bg-card);
+  cursor: pointer;
+  transition: border-color var(--transition-base), transform 0.1s;
+}
+
+button:hover {
+  border-color: var(--accent-blue);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto var(--accent-blue);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}

@@ -1,10 +1,12 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { GUESS_DIRECTION, type GuessDirection } from "../types/game";
+import { syncScoreToAWS } from "../services/scoreService";
 
 interface ActiveGuess {
   startPrice: number;
   startTime: number;
-  direction: "up" | "down";
+  direction: GuessDirection;
 }
 
 interface GameState {
@@ -13,12 +15,20 @@ interface GameState {
   score: number;
   activeGuess: ActiveGuess | null;
 
+  // the signal from the timer
+  isTimerExpired: boolean;
+
+  // Most recent guess status, used to trigger the alert in GuessPage when a guess is resolved
+  lastResult: boolean | null; // true = win, false = loss, null = none/pending
+
   // actions
   setUserName: (name: string) => void;
-  setGuess: (price: number, direction: "up" | "down") => void;
+  setTimerExpired: (expired: boolean) => void;
+  setGuess: (price: number, direction: GuessDirection) => void;
   resolveGuess: (currentPrice: number) => void;
-  resetScore: () => void; // utility action to reset score, but will persist the username
-  logout: () => void; // utility action to clear all user data
+  clearResult: () => void; // utility action to clear the lastResult state after showing the alert
+  resetScore: () => void; // TBD: utility action to reset score, but will persist the username
+  logout: () => void; // TBD: utility action to clear all user data
 }
 
 export const useGameStore = create<GameState>()(
@@ -27,32 +37,47 @@ export const useGameStore = create<GameState>()(
       userName: "",
       score: 0,
       activeGuess: null,
+      isTimerExpired: false,
+      lastResult: null,
 
-      setUserName: (name) => set({ userName: name }),
+      setUserName: (name: string) => set({ userName: name }),
+
+      setTimerExpired: (expired: boolean) => set({ isTimerExpired: expired }),
 
       setGuess: (price, direction) => set({
         activeGuess: {
           startPrice: price,
           startTime: Date.now(),
           direction,
-        }
+        },
+        isTimerExpired: false,
+        lastResult: null,
       }),
 
       resolveGuess: (currentPrice) => {
-        const { activeGuess, score } = get();
+        const { activeGuess, score, userName } = get();
         if (!activeGuess) return;
 
-        const isWin = activeGuess.direction === "up" ? 
+        const isWin = activeGuess.direction === GUESS_DIRECTION.UP ? 
           currentPrice > activeGuess.startPrice
           : currentPrice < activeGuess.startPrice;
+        const newScore = isWin ? score + 1 : Math.max(0, score - 1);
+
         set({
-          score: isWin ? score + 1 : score - 1,
+          score: newScore,
           activeGuess: null,
+          isTimerExpired: false,
+          lastResult: isWin,
+        });
+
+        // Sync score to AWS
+        syncScoreToAWS(userName, newScore).catch((err) => {
+          console.error("Background sync failed:", err);
         });
       },
 
-      resetScore: () => set({ score: 0, activeGuess: null }),
-
+      clearResult: () => set({ lastResult: null, isTimerExpired: false }),
+      resetScore: () => set({ score: 0, activeGuess: null, lastResult: null }),
       logout: () => set({ userName: "", score: 0, activeGuess: null }),
     }),
     {

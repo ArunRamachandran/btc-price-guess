@@ -1,0 +1,26 @@
+/* Design tokens and variables for the application */
+:root {
+  --bg-deep: #f8fafc;      /* Light Grey/White background */
+  --bg-card: #ffffff;      /* Pure white cards/inputs */
+  --border-ui: #e2e8f0;    /* Light border */
+  
+  --text-main: #0f172a;    /* Dark Navy text */
+  --text-muted: #64748b;   
+
+  --accent-blue: #3b82f6; 
+  --accent-up: #10b981;    
+  --accent-down: #ef4444;  
+  
+  --font-main: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --line-height: 1.5;
+  --font-weight-reg: 400;
+  --font-weight-med: 500;
+  --font-weight-bold: 700;
+
+  /* UI Tokens */
+  --radius-xl: 24px;
+  --radius-md: 12px;
+  --transition-base: 0.25s ease;
+  --shadow-sm: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}

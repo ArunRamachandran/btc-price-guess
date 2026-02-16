@@ -1,0 +1,184 @@
+/* --- Feature: UserHeader --- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.badge {
+  background: var(--bg-card);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-ui);
+  display: flex;
+  flex-direction: column;
+  min-width: 100px;
+}
+
+.tag {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05rem;
+  margin-bottom: 0.25rem;
+}
+
+.badge strong {
+  font-size: 1.1rem;
+  color: var(--text-main);
+}
+
+.accent {
+  color: var(--accent-blue) !important;
+}
+
+/* --- Feature: PriceTracker --- */
+.priceContainer {
+  text-align: center;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.priceLabel {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.priceValue {
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: -2px;
+  color: var(--text-main);
+  /* Crucial: prevents the UI from "shaking" as numbers change */
+  font-variant-numeric: tabular-nums;
+}
+
+.error {
+  color: var(--accent-down);
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* --- Feature: GuessControls --- */
+.controlsContainer {
+  display: flex;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.guessButton {
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 2rem;
+  border-radius: var(--radius-xl);
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: #ffffff;
+  transition: transform 0.1s ease, filter 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.guessButton:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.guessButton:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.guessButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(0.5);
+}
+
+.upButton {
+  background-color: var(--accent-up);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+}
+
+.downButton {
+  background-color: var(--accent-down);
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.3);
+}
+
+/* --- Feature: GuessTimer --- */
+.timerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.timerCircle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 6px solid var(--accent-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-deep);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.timerValue {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--accent-blue);
+  font-variant-numeric: tabular-nums;
+}
+
+.lockPrice {
+  font-size: 1rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.lockPrice strong {
+  display: block;
+  font-size: 1.5rem;
+  color: var(--text-main);
+  margin-top: 0.25rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* --- Feature: Guess Result Toasts --- */
+.pendingToast {
+  background-color: var(--accent-blue);
+  color: white;
+  padding: 1.25rem 2rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: slideUp 0.4s ease-out;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.winToast { background-color: var(--accent-up); color: white; padding: 1rem; border-radius: var(--radius-md); }
+.lossToast { background-color: var(--accent-down); color: white; padding: 1rem; border-radius: var(--radius-md); }

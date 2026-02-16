@@ -1,0 +1,12 @@
+.layout {
+  max-width: 650px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  background-color: var(--bg-deep);
+  position: relative;
+  box-sizing: border-box;
+}
