@@ -6,6 +6,23 @@ A real-time Bitcoin price prediction challenge. Players guess whether the price 
 
 ---
 
+## 🛠 Tech Stack
+- **Framework:** React 18 (Vite + TypeScript)
+- **State Management:** Zustand
+- **Styling:** CSS Modules (Atomic UI approach)
+- **Testing:** Vitest + React Testing Library + JSDOM
+- **API:** Binance (REST API)
+
+---
+
+## 📝 Features Checklist
+- [x] **Real-time Data:** Fetches live BTC/USD prices via the Binance Public API.
+- [x] **Game Logic:** 60-second "lock-in" period for price predictions.
+- [x] **Cloud Sync:** Automatic score persistence to AWS DynamoDB.
+- [x] **Persistent Progress:** Scores and usernames are saved to `localStorage` using Zustand persistence.
+
+---
+
 ## Architecture & Design Decisions
 
 This project is built using a **Serverless Full-Stack** approach. Here is why the tech stack was chosen:
@@ -57,6 +74,11 @@ Follow these instructions to get the project running on your local machine.
     ```
     Open [http://localhost:5173](http://localhost:5173) in your browser.
 
+5.  **Execute tests:**
+    ```bash
+    npm run test
+    ```
+
 ---
 
 ## 🚀 How to Access the Live Project
@@ -67,8 +89,3 @@ The production version of the app is hosted on **GitHub Pages**.
 2.  **Deployment Note:** The live version uses GitHub Secrets to securely inject the `VITE_AWS_API_URL` during the build process, ensuring the backend endpoint is never hardcoded in the source history.
 
 ---
-
-## 📝 Features Checklist
-- [x] **Real-time Data:** Fetches live BTC/USD prices via the Binance Public API.
-- [x] **Game Logic:** 60-second "lock-in" period for price predictions.
-- [x] **Cloud Sync:** Automatic score persistence to AWS DynamoDB.
