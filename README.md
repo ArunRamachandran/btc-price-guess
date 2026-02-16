@@ -6,7 +6,7 @@ A real-time Bitcoin price prediction challenge. Players guess whether the price 
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 - **Framework:** React 18 (Vite + TypeScript)
 - **State Management:** Zustand
 - **Styling:** CSS Modules (Atomic UI approach)
@@ -15,7 +15,7 @@ A real-time Bitcoin price prediction challenge. Players guess whether the price 
 
 ---
 
-## 📝 Features Checklist
+## Features Checklist
 - [x] **Real-time Data:** Fetches live BTC/USD prices via the Binance Public API.
 - [x] **Game Logic:** 60-second "lock-in" period for price predictions.
 - [x] **Cloud Sync:** Automatic score persistence to AWS DynamoDB.
@@ -42,7 +42,7 @@ This project is built using a **Serverless Full-Stack** approach. Here is why th
 
 ---
 
-## 🛠 Local Development Setup
+## Local Development Setup
 
 Follow these instructions to get the project running on your local machine.
 
@@ -81,7 +81,7 @@ Follow these instructions to get the project running on your local machine.
 
 ---
 
-## 🚀 How to Access the Live Project
+## How to Access the Live Project
 
 The production version of the app is hosted on **GitHub Pages**.
 
