@@ -116,3 +116,7 @@ Once a guess is placed, it cannot be canceled or reset until the 60-second resol
 ### 5. UI Frameworks
 I chose to use native CSS Modules and custom components instead of a UI library like MUI or Tailwind.
 * **Decision:** This keeps the bundle size small and provides full control over the styling, demonstrating foundational CSS and React patterns.
+
+### 6. Testing Scope
+Testing is focused on the core business logic within the application store (Zustand).
+* **Decision:** I prioritized unit tests for the scoring and guess-resolution engine over broad UI component testing. I need to expand the test coverage to other part of the main guess page where the certain actions will be triggered. It is currently limitted around the core business logic.
