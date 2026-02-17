@@ -28,7 +28,7 @@ interface GameState {
   resolveGuess: (currentPrice: number) => void;
   clearResult: () => void; // utility action to clear the lastResult state after showing the alert
   resetScore: () => void; // TBD: utility action to reset score, but will persist the username
-  logout: () => void; // TBD: utility action to clear all user data
+  logout: () => void;
 }
 
 export const useGameStore = create<GameState>()(
