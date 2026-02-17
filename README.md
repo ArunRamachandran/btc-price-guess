@@ -65,7 +65,7 @@ Follow these instructions to get the project running on your local machine.
 3.  **Environment Variables:**
     Create a `.env` file in the root directory and add AWS API endpoint:
     ```bash
-    VITE_AWS_API_URL=https://w8aaag9np1.execute-api.eu-north-1.amazonaws.com/update-score
+    VITE_AWS_API_URL=https://ztqfu0wyd0.execute-api.eu-north-1.amazonaws.com/update-score
     ```
 
 4.  **Run the App:**
