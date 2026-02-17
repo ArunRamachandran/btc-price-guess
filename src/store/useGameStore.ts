@@ -70,10 +70,13 @@ export const useGameStore = create<GameState>()(
           lastResult: isWin,
         });
 
-        // Sync score to AWS
-        syncScoreToAWS(userName, newScore).catch((err) => {
-          console.error("Background sync failed:", err);
-        });
+        // Sync score to AWS only when the score has changed (win or loss) 
+        // to avoid unnecessary API calls on every guess resolution
+        if (newScore !== score) {
+          syncScoreToAWS(userName, newScore).catch((err) => {
+            console.error("Background sync failed:", err);
+          });
+        }
       },
 
       clearResult: () => set({ lastResult: null, isTimerExpired: false }),
