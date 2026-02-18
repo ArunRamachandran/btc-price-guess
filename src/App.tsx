@@ -3,7 +3,7 @@ import { AppRoutes } from './routes/AppRoutes';
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/btc-price-guess">
       <AppRoutes />
     </Router>
   )
