@@ -2,7 +2,7 @@
 
 A real-time Bitcoin price prediction challenge. Players guess whether the price of BTC will rise or fall within a 60-second window, with scores persisted globally via a serverless AWS backend.
 
-**[View Live Project](https://arunramachandran.github.io/btc-price-guess/)**
+**[View Live Project](https://arunramachandran.github.io/btc-price-guess/guess)**
 
 ---
 
@@ -85,7 +85,7 @@ Follow these instructions to get the project running on your local machine.
 
 The production version of the app is hosted on **GitHub Pages**.
 
-1.  **URL:** `https://arunramachandran.github.io/btc-price-guess/`
+1.  **URL:** `https://arunramachandran.github.io/btc-price-guess/guess`
 2.  **Deployment Note:** The live version uses GitHub Secrets to securely inject the `VITE_AWS_API_URL` during the build process, ensuring the backend endpoint is never hardcoded in the source history.
 
 ---
